@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TESTS_DIR="/var/lib/tests"
+[[ ! -d "$TESTS_DIR" ]] && mkdir "$TESTS_DIR" 
+
+get_done()
+{
+	[[ -e "${TESTS_DIR}/${1}_done" ]]
+}
+
+put_done()
+{
+	touch "${TESTS_DIR}/${1}_done"
+}
+
