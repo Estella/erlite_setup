@@ -21,16 +21,14 @@ for i in "${SERVICES[@]}"; do
 			
 			# Make sure symlink is setup for /config/etc/freeradius
 			mv /etc/freeradius{,.old} &&
-			ln -s /config/etc/freeradius /etc/freeradius &&
-			put_done "$i"
-		fi
+			ln -s /config/etc/freeradius /etc/freeradius
+		fi &&
 
 		if [[ "$i" == "knockd" ]]; then
 			mv /etc/knockd.conf{,.old} &&
-			ln -s /config/etc/knockd.conf /etc/knockd.conf &&
-			put_done "$i"
-		fi
-
-		service "$i" start
+			ln -s /config/etc/knockd.conf /etc/knockd.conf
+		fi && 
+		service "$i" start &&
+		put_done "$i"
 	fi
 done
