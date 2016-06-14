@@ -4,8 +4,12 @@
 #include
 . include/common_functions 
 
+SUDOERSD_CONFIG=/etc/sudoers.d/99_ssh_auth_sock
+
 if ! get_done ssh_auth_sock; then 
-	cat <<-EOF >> /etc/sudoers.d/99_env_add_ssh_auth_sock.sh
+	cat <<-EOF >> "${SUDOERSD_CONFIG}"
 		Defaults env_keep+=SSH_AUTH_SOCK
 	EOF
-fi
+	chmod 440 "${SUDOERSD_CONFIG}" &&
+	put_done ssh_auth_sock
+fi &&
