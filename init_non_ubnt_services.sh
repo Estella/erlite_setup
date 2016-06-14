@@ -4,7 +4,7 @@
 . include/common_functions
 
 SERVICES=( 
-	"freeradius"
+#	"freeradius"
 	"knockd"
 )
 
@@ -27,6 +27,7 @@ for i in "${SERVICES[@]}"; do
 		if [[ "$i" == "knockd" ]]; then
 			mv /etc/knockd.conf{,.old} &&
 			ln -s /config/etc/knockd.conf /etc/knockd.conf
+			sed -ri 's|(START_KNOCKD=)0|\11|' /etc/default/knockd
 		fi && 
 		service "$i" start &&
 		put_done "$i"

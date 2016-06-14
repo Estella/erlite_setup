@@ -15,7 +15,7 @@ packages=(
 #	"iperf3"
 	"git"
 	"wget"
-	"freeradius" # CRITICAL
+#	"freeradius" # CRITICAL
 	"knockd" # CRITICAL
 	"apt-utils"
 	"apt-file"
