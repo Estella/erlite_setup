@@ -30,8 +30,8 @@ packages=(
 )
 
 if ! get_done "packages"; then
-	apt-get update &&
-	apt-get install -y "${packages[@]}" && 
+	apt-get $QUIET -y update &&
+	apt-get $QUIET -y install "${packages[@]}" &&
 
 	if [[ "$?" == 0 ]]; then 
 		echo "package install successful" 
