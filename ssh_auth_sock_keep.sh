@@ -16,4 +16,4 @@ if ! get_done ssh_auth_sock; then
 	EOF
 	chmod 440 "${SUDOERSD_CONFIG}" &&
 	put_done ssh_auth_sock
-fi &&
+fi
