@@ -1,7 +1,14 @@
 #!/bin/bash
 
-#include 
-. include/common_functions
+QUIET=""
+#QUIET="-qq"
+
+# Get Absolute path
+ABS_PATH="$(readlink -e $BASH_SOURCE)"
+ABS_PATH="${ABS_PATH%/*}"
+
+# Includes
+source "${ABS_PATH}/include/common_functions"
 
 packages=(
 	"vim"

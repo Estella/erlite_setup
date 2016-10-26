@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# include
-. include/common_functions
+# Get Absolute path
+ABS_PATH="$(readlink -e $BASH_SOURCE)"
+ABS_PATH="${ABS_PATH%/*}"
+
+# Includes
+source "${ABS_PATH}/include/common_functions"
 
 SERVICES=( 
 #	"freeradius"

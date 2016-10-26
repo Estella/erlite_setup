@@ -1,8 +1,12 @@
 #!/bin/bash
 # So we can use our ssh-agent forwarding from root
 
-#include
-. include/common_functions 
+# Get Absolute path
+ABS_PATH="$(readlink -e $BASH_SOURCE)"
+ABS_PATH="${ABS_PATH%/*}"
+
+# Includes
+source "${ABS_PATH}/include/common_functions"
 
 SUDOERSD_CONFIG=/etc/sudoers.d/99_ssh_auth_sock
 
