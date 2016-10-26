@@ -23,7 +23,8 @@ packages=(
 	"git"
 	"wget"
 #	"freeradius" # CRITICAL
-	"knockd" # CRITICAL
+#	"knockd" # CRITICAL
+	"fwknop-server"
 	"apt-utils"
 	"apt-file"
 )

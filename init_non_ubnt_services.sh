@@ -9,7 +9,8 @@ source "${ABS_PATH}/include/common_functions"
 
 SERVICES=( 
 #	"freeradius"
-	"knockd"
+#	"knockd"
+	"fwknop-server"
 )
 
 for i in "${SERVICES[@]}"; do 
@@ -26,13 +27,13 @@ for i in "${SERVICES[@]}"; do
 			# Make sure symlink is setup for /config/etc/freeradius
 			mv /etc/freeradius{,.old} &&
 			ln -s /config/etc/freeradius /etc/freeradius
-		fi &&
-
-		if [[ "$i" == "knockd" ]]; then
+		elif [[ "$i" == "knockd" ]]; then
 			mv /etc/knockd.conf{,.old} &&
 			ln -s /config/etc/knockd.conf /etc/knockd.conf
 			sed -ri 's|(START_KNOCKD=)0|\11|' /etc/default/knockd
-		fi && 
+		elif [[ "$i" == "fwknop-server" ]]; then
+			chmod 0600 /etc/fwknop/*.conf
+		fi
 		service "$i" start &&
 		put_done "$i"
 	fi
