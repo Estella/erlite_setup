@@ -1,7 +1,7 @@
 #!/bin/bash
 
 QUIET=""
-#QUIET="-qq"
+QUIET="-qq"
 
 # Get Absolute path
 ABS_PATH="$(readlink -e $BASH_SOURCE)"
@@ -18,15 +18,13 @@ packages=(
 	"harden-tools"
 	"ngrep"
 	"tcpdump"
-	"man"
-#	"iperf3"
 	"git"
 	"wget"
-#	"freeradius" # CRITICAL
-#	"knockd" # CRITICAL
 	"fwknop-server"
 	"apt-utils"
 	"apt-file"
+	"dialog"
+	"tree"
 )
 
 if ! get_done "packages"; then
